@@ -30,9 +30,22 @@ Some skills call others. Install the ones they need too:
 
 ```bash
 git clone https://github.com/t3dotgg/tstack
-cp -R tstack/skills/* ~/.claude/skills/   # Claude Code
-cp -R tstack/skills/* ~/.codex/skills/    # Codex
+cd tstack
+./skill.sh install
 ```
+
+`skill.sh` symlinks every `skills/*` directory into `~/.claude/skills/`
+(Claude Code) and `~/.codex/skills/` (Codex), so a `git pull` updates them in
+place. It respects `CLAUDE_CONFIG_DIR` and `CODEX_HOME`. Existing files and
+directories that aren't symlinks are skipped, so your own copies are safe.
+
+- `./skill.sh install --project /path/to/repo` installs into that repo's
+  `.claude/skills/` and `.agents/skills/` instead.
+- `./skill.sh install --dry-run` shows what would change.
+- `./skill.sh uninstall` removes only the links that point back here.
+
+To install a single skill by hand, copy or link its directory, for example
+`cp -R skills/file-pr ~/.claude/skills/`.
 
 ## Requirements
 
