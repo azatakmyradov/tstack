@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orchestrate"
+  short_description: "Plan and delegate the work instead of implementing it"
+  default_prompt: "Use $orchestrate to split this into tasks, run them with subagents, and verify and integrate the results. Do not implement it yourself."
